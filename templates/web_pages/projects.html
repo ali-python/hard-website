@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block title %} Home | HARD {% endblock %}
+{% block content %}
+{% load static %}
+    <section class="pricing-page">
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <div class="box">
+                    <div class="row">
+                        <h3 class="text-center"><b>Our on Going and Completed Projects</b></h3>
+                    </div>
+                    <div class="box-body col-sm-8" style="margin-left:250px; padding: 10px; text-align: center;">
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-striped table-bordered table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Project Tittle</th>
+                                    <th>Theme</th>
+                                    <th>Donor / Funder</th>
+                                    <th>Project Value</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Geogh Area / District </th>
+                                    <th>Major Interventions / Achievements</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for product in object_list %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{product.project_title|title}}</td>
+                                    <td>{{product.theme|title}}</td>
+                                    <td>{{product.donor}}</td>
+                                    <td>{{product.project_value}}</td>
+                                    <td>{{product.start_date}}</td>
+                                    <td>{{product.end_date}}</td>
+                                    <td>{{product.area|title}}</td>
+                                    <td>{{product.achievements|title}}</td>
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                            {% if paginator.page_range|length > 1 %}
+                            <div class="text-center col-lg-12">
+                                <ul class="pagination justify-content-center">
+                                    <li><a  style="background-color: #3070A8; color: white" class="page_previous" href="{% if page_obj.has_previous %}{% url 'product:list' %}?page={{ page_obj.previous_page_number }}{% else %}#{% endif %}" title="Previous"><<</a></li>
+                                    <li><a style="background-color: #3070A8; color: white" class="page_next" href="{% if page_obj.has_next %}{% url 'product:list' %}?page={{ page_obj.next_page_number }}{% else %}#{% endif %}" title="Next">>></a></li>
+                                </ul>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!--/pricing-page-->
+           
+    <section id="bottom">
+        <div class="container wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+            <div class="row">
+                <h2 style="color: black; text-align: center;">Geographical Coverage</h2>
+                <p style="text-align: center;"> The geographical coverage is Pakistan but the Balochistan is the prime focus of the organization.</p>
+                <br>
+                <br>
+                <div class="col-md-4 col-sm-8">
+                    <div class="widget">
+                        <h3>Head Office</h3>
+                        <ul>
+                            <ol><a href="#">House No J9 West Afzal Bungalows Spiny Road Quetta Balochistan, Pakistan</a></ol>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-4 col-sm-8">
+                    <div class="widget">
+                        <h3>Regional Office</h3>
+                        <ul>
+                            <ol><a href="#">Suneri Street In front of NHA Office Near RCD Road District Khuzdar</a></ol>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+                <div class="col-md-4 col-sm-8">
+                    <div class="widget">
+                        <h3>Field Office</h3>
+                        <ul>
+                            <ol><a href="#">Near Civic Center Arcaiteded Housing Society RCD Road Hub District Lasbella</a></ol>
+                            <ol><a href="#">Dilbod Colony Near NRSP Office City & District Awaran</a></ol>
+                            <ol><a href="#">Mughalzai No 1 Iskalko Road City & District Kalat </a></ol>
+                            <ol><a href="#">Near Mujeeb Shahwani house Killi Choto District Mastung </a></ol>
+                        </ul>
+                    </div>    
+                </div><!--/.col-md-3-->
+
+            </div>
+        </div>
+    </section><!--/#bottom-->
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; PartumSolutions <a target="_blank" href="http://www.partumSolution.com" title="Partum Solutions">HARD</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Faq</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer><!--/#footer-->
+
+{% endblock %}
