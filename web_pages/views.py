@@ -16,7 +16,6 @@ from .models import Project, ProjectGallery
 
 class IndexView(TemplateView):
     template_name = 'index.html'
-
     def get_context_data(self, **kwargs):
         context = super(
             IndexView, self).get_context_data(**kwargs)
@@ -41,3 +40,10 @@ class GalleryList(ListView):
     model = ProjectGallery
     template_name = 'web_pages/gallery.html'
     paginate_by = 100
+
+
+class ContactUs(TemplateView):
+    template_name = 'web_pages/contact.html'
+    def get_context_data(self, **kwargs):
+        context = super(
+            ContactUs, self).get_context_data(**kwargs)
